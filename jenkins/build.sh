@@ -1,3 +1,6 @@
+# Getting Jenkins Username
+USERNAME=$1
+
 # Getting the version
 ORIGINAL_JENKINS_TAGS=$(wget -q https://registry.hub.docker.com/v1/repositories/jenkins/jenkins/tags -O -   \
 | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' \
@@ -38,7 +41,7 @@ echo "going to build ${#build_list[@]} number of docker images"
 
 # Testing with lts push
 TAG=lts
-TARGET="kharam/jenkins:${TAG}"
+TARGET="${USERNAME}/jenkins:${TAG}"
 docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/jenkins/Dockerfile .
 docker push ${TARGET}
 docker rmi ${TARGET}

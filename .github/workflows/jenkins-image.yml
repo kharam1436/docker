@@ -25,4 +25,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: jenkins/build.sh
+        run: jenkins/build.sh ${{ secrets.DOCKERHUB_USERNAME }}
