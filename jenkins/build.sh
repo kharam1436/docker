@@ -28,21 +28,16 @@ done
 # including lts and latest, slim
 build_list+=( "lts" "lts-jdk11" "lts-slim" "slim" "latest" )
 
-# 
+# Show the number of build items
 echo "going to build ${#build_list[@]} number of docker images"
 
-# for i in ${!build_list[@]}
-# do
-#   TAG=${build_list[$i]}
-#   TARGET="jenkins:${TAG}"
-
-#   docker build --build-arg TAG=${TAG} -t ${TARGET} -f Dockerfile .
-# done
-
-# Testing with lts push
-TAG=lts
-TARGET="${USERNAME}/jenkins:${TAG}"
-docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/jenkins/Dockerfile .
-docker push ${TARGET}
-docker rmi ${TARGET}
+# Build all from the list
+for i in ${!build_list[@]}
+do
+  TAG=${build_list[$i]}
+  TARGET="${USERNAME}/jenkins:${TAG}"
+  docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/jenkins/Dockerfile .
+  docker push ${TARGET}
+  docker rmi ${TARGET}
+done
 
