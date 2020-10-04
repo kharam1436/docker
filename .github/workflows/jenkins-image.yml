@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Jenkins Docker Images CI
 
 on:
   push:
