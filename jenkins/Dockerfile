@@ -1,4 +1,7 @@
-FROM jenkins/jenkins:2.249.1-lts
+# Getting the arguement before the build
+ARG TAG
+
+FROM jenkins/jenkins:${TAG}
 
 # Run as a root
 USER root
@@ -21,3 +24,6 @@ RUN apt-get update \
 
 # make jenkins to run docker
 RUN usermod -aG docker jenkins
+
+# change user back to jenkins
+USER jenkins
