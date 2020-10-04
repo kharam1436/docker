@@ -38,7 +38,8 @@ echo "going to build ${#build_list[@]} number of docker images"
 
 TAG=lts
 TARGET="jenkins:${TAG}"
-docker build --build-arg TAG=${TAG} -t ${TARGET} -f Dockerfile .
+echo "Current directory is ${PWD}"
+docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/Dockerfile .
 
 echo "list all images in docker"
 docker images
