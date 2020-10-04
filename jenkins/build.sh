@@ -38,7 +38,7 @@ echo "going to build ${#build_list[@]} number of docker images"
 
 # Testing with lts push
 TAG=lts
-TARGET="jenkins:${TAG}"
+TARGET="kharam/jenkins:${TAG}"
 docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/jenkins/Dockerfile .
 docker push ${TARGET}
 docker rmi ${TARGET}
