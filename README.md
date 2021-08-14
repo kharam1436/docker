@@ -23,3 +23,11 @@ ex ) Jenkins + docker, timescale and longer extension support
 | --------- | ------------------------------------------------------------------------ |
 | Jenkins   | [dockerhub](https://hub.docker.com/repository/docker/kharam/jenkins)     |
 | timescale | [dockerhub](https://hub.docker.com/repository/docker/kharam/timescaledb) |
+
+# Schedule
+
+The build is pushed weekly.
+
+# Edit the file
+
+You are always welcome to make PR, and improve this repository. (thanks ahead)
