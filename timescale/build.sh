@@ -36,7 +36,7 @@ do
   TAG=${build_list[$i]}
   TARGET="${USERNAME}/timescaledb:${TAG}"
   docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/timescale/Dockerfile .
-  # docker push ${TARGET}
-  # docker rmi ${TARGET}
+  docker push ${TARGET}
+  docker rmi ${TARGET}
 done
 
