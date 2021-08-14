@@ -1,0 +1,26 @@
+name: Timescale Docker Images CI
+
+on:
+  schedule:
+    - cron: 0 12 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: timescale/build.sh ${{ secrets.DOCKERHUB_USERNAME }}
