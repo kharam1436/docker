@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Getting Jenkins Username
+# Getting Docker Username
 USERNAME=$1
 
 # Getting the version
@@ -16,7 +16,7 @@ MY_TIMESCALE_TAGS=$(wget -q https://registry.hub.docker.com/v1/repositories/khar
 | tr '}' '\n'  \
 | awk -F: '{print $3}')
 
-# Making the build list to build jenkins image with more better docker support
+# Making the build list to build timescale image with more better docker support
 build_list=()
 
 # Making build list to build docker file
@@ -35,7 +35,7 @@ for i in ${!build_list[@]}
 do
   TAG=${build_list[$i]}
   TARGET="${USERNAME}/timescale:${TAG}"
-  docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/jenkins/Dockerfile .
+  docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/timescale/Dockerfile .
   docker push ${TARGET}
   docker rmi ${TARGET}
 done
