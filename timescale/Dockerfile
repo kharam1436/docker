@@ -1,3 +1,6 @@
+# Getting the arguement before the build
+ARG TAG
+
 FROM timescale/timescaledb:${TAG}
 
 # Getting timescale compatibility library from 1.5.0 ~ 1.7.1 library

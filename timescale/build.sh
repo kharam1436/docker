@@ -34,9 +34,9 @@ echo "going to build ${#build_list[@]} number of docker images"
 for i in ${!build_list[@]}
 do
   TAG=${build_list[$i]}
-  TARGET="${USERNAME}/timescale:${TAG}"
+  TARGET="${USERNAME}/timescaledb:${TAG}"
   docker build --build-arg TAG=${TAG} -t ${TARGET} -f ${PWD}/timescale/Dockerfile .
-  docker push ${TARGET}
-  docker rmi ${TARGET}
+  # docker push ${TARGET}
+  # docker rmi ${TARGET}
 done
 
