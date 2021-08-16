@@ -8,4 +8,4 @@ COPY timescale/timescale.tar.gz /tmp
 RUN tar xf /tmp/timescale.tar.gz -C /tmp
 
 # copying libraries dependencies
-RUN cp -R -u /tmp/postgresql /usr/local/lib/postgresql
+RUN cp -R -u /tmp/postgresql/* /usr/local/lib/postgresql
